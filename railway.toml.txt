@@ -1,0 +1,6 @@
+[build]
+builder = "NIXPACKS"
+
+[deploy]
+cronSchedule = "0 21 * * 1-5"
+startCommand = "python edge_scanner.py"
