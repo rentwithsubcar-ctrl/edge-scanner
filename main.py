@@ -53,58 +53,38 @@ def scan_and_recommend() -> str:
         messages=[{
             "role": "user",
             "content": (
-                f"Today is {today}. Search for current data on SPY, QQQ, and IWM ETFs.
-"
-                f"Search separately for: closing price, day change %, RSI(14), 50-day MA, and VIX.
-"
-                f"Try searches like 'SPY RSI 14 today', 'QQQ technical indicators', 'IWM 50 day moving average'.
+                f"""Today is {today}. Search for current data on SPY, QQQ, and IWM ETFs.
+Search separately for: closing price, day change %, RSI(14), 50-day MA, and VIX.
+Try searches like 'SPY RSI 14 today', 'QQQ technical indicators', 'IWM 50 day moving average'.
 
-"
-                f"Entry rules — ALL four must pass for a BUY signal:
-"
-                f"RULE 1: Day drop >= 1% (PASS = dropped 1%+, FAIL = flat or up)
-"
-                f"RULE 2: RSI(14) <= 42 (PASS = oversold at 42 or below, FAIL = above 42)
-"
-                f"RULE 3: Price above 50-day MA (PASS = above MA, FAIL = below MA)
-"
-                f"RULE 4: VIX >= 13 (PASS = fear elevated at 13+, FAIL = only if VIX below 13)
+Entry rules — ALL four must pass for a BUY signal:
+RULE 1: Day drop >= 1% (PASS = dropped 1%+, FAIL = flat or up)
+RULE 2: RSI(14) <= 42 (PASS = oversold at 42 or below, FAIL = above 42)
+RULE 3: Price above 50-day MA (PASS = above MA, FAIL = below MA)
+RULE 4: VIX >= 13 (PASS = fear elevated at 13+, FAIL = only if VIX below 13)
 
-"
-                f"Bankroll: ${BANKROLL:.2f}, max risk per trade: ${max_risk:.2f}.
+Bankroll: ${BANKROLL:.2f}, max risk per trade: ${max_risk:.2f}.
 
-"
-                f"Use EXACTLY this format:
+Use EXACTLY this format:
 
-"
-                f"VERDICT: [BUY SPY / BUY QQQ / BUY IWM / NO TRADE]
+VERDICT: [BUY SPY / BUY QQQ / BUY IWM / NO TRADE]
 
-"
-                f"CONDITIONS:
-"
-                f"SPY: [day%] | RSI [value] | MA [above/below $value] | VIX [value] | [PASS/FAIL]
-"
-                f"QQQ: [day%] | RSI [value] | MA [above/below $value] | VIX [value] | [PASS/FAIL]
-"
-                f"IWM: [day%] | RSI [value] | MA [above/below $value] | VIX [value] | [PASS/FAIL]
+CONDITIONS:
+SPY: [day%] | RSI [value] | MA [above/below $value] | VIX [value] | [PASS/FAIL]
+QQQ: [day%] | RSI [value] | MA [above/below $value] | VIX [value] | [PASS/FAIL]
+IWM: [day%] | RSI [value] | MA [above/below $value] | VIX [value] | [PASS/FAIL]
 
-"
-                f"TRADE (fill in if BUY, otherwise N/A):
-"
-                f"Ticker: | Strike: $ | Expiry: {expiry} | Est. premium: $
-"
-                f"- Limit BUY at: $
-"
-                f"- Limit SELL (profit +90%): $
-"
-                f"- Stop SELL (loss -50%): $
+TRADE (fill in if BUY, otherwise N/A):
+Ticker: | Strike: $ | Expiry: {expiry} | Est. premium: $
+- Limit BUY at: $
+- Limit SELL (profit +90%): $
+- Stop SELL (loss -50%): $
 
-"
-                f"REASON: [2 sentences on why BUY or NO TRADE]
+REASON: [2 sentences on why BUY or NO TRADE]
 
-"
-                f"WATCH: [what to look for tomorrow]"
+WATCH: [what to look for tomorrow]"""
             )
+
         }]
     )
 
